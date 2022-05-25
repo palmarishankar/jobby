@@ -21,8 +21,12 @@ class Home extends Component {
       }
       const response = await fetch(url, options)
       const data = await response.json()
-
-      this.setState({profileDetails: data})
+const updatedData = data.map(eachDetails => ({
+        name: eachDetails.name,
+        profileImageUrl: eachDetails.profile_image_url,
+        shortBio: eachDetails.short_bio,
+      }))
+      this.setState({profileDetails: updatedData})
     }
   }
 
